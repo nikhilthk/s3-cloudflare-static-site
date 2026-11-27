@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nikhil Chauhan - Cloud & DevOps Portfolio</title>
+<meta name="description" content="Nikhil Chauhan, entry-level Cloud and DevOps engineer building CI/CD pipelines, containers and AWS projects.">
+<meta property="og:title" content="Nikhil Chauhan - Cloud & DevOps Portfolio">
+<meta property="og:description" content="Cloud and DevOps projects built with AWS, Docker, Terraform and GitHub Actions.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--mut:#6b6b6b;--line:#e4e4e4;--blue:#2f6bff}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:#fff;color:var(--ink);font:400 1rem/1.6 Inter,system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit}:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+h2{font:800 clamp(2.4rem,7vw,4.4rem)/1 Inter,sans-serif;letter-spacing:-.045em;text-align:center;margin-bottom:44px}
+section{padding:90px 0;position:relative}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;border:0;border-radius:99px;padding:12px 22px;font:500 .95rem Inter;text-decoration:none;cursor:pointer;transition:transform .2s}
+.pill:hover{transform:translateY(-2px) scale(1.03)}
+/* hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;overflow:hidden;text-align:center}
+.wave{position:absolute;left:18px;top:18px;font-size:2.2rem;transform-origin:70% 70%;animation:wv 2.4s ease infinite}
+@keyframes wv{0%,50%,100%{transform:rotate(0)}10%,30%{transform:rotate(18deg)}20%,40%{transform:rotate(-10deg)}}
+.soc{position:absolute;right:18px;top:20px;display:flex;gap:10px}
+.soc a{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font:700 .8rem Inter;text-decoration:none;border:1px solid var(--line);transition:.2s}
+.soc a:hover{background:var(--ink);color:#fff}
+.path{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.path text{font:500 14px 'JetBrains Mono',monospace;fill:#c9c9c9}
+.n3{perspective:900px;width:min(560px,92vw);position:relative}
+.nm{display:block;width:100%;overflow:visible;transform-style:preserve-3d;animation:sway 7s ease-in-out infinite alternate}
+.nm text{font:800 78px Inter,sans-serif;letter-spacing:-3px}
+@keyframes sway{from{transform:rotateY(-24deg) rotateX(10deg)}to{transform:rotateY(24deg) rotateX(-6deg)}}
+.hi{font:800 clamp(2.6rem,10vw,4.6rem)/1 Inter,sans-serif;color:#9b9b9b;letter-spacing:-.03em;margin-top:-6px;transition:opacity .4s}
+.fade{opacity:0}
+.sub{margin-top:18px;color:var(--mut);font-size:1.05rem}
+.scroll{position:absolute;bottom:90px;font-size:.8rem;color:var(--mut)}
+/* intro */
+.intro{text-align:left}
+.intro small{display:block;color:var(--mut);margin-bottom:12px}
+.intro h3{font:700 clamp(1.8rem,5vw,3.1rem)/1.15 Inter;letter-spacing:-.03em;max-width:18ch}
+.intro p{font-size:clamp(1.05rem,2.4vw,1.45rem);margin-top:22px;max-width:30ch;position:relative}
+.stk{position:absolute;font:500 .95rem Inter;padding:7px 14px;border-radius:8px;border:1px solid rgba(0,0,0,.15);box-shadow:0 6px 14px rgba(0,0,0,.12);opacity:0;transform:translateY(-120px) rotate(0);white-space:nowrap}
+.go .stk{animation:drop .9s cubic-bezier(.3,1.5,.5,1) forwards}
+@keyframes drop{to{opacity:1;transform:translateY(0) rotate(var(--r))}}
+/* terminal */
+.tw{position:relative;padding:60px 0 90px;overflow:hidden}
+.floor{position:absolute;left:-10%;right:-10%;bottom:0;height:75%;background:repeating-linear-gradient(90deg,#e6e6e6 0 1px,transparent 1px 64px),repeating-linear-gradient(0deg,#e6e6e6 0 1px,transparent 1px 44px);transform:perspective(420px) rotateX(58deg);transform-origin:bottom;-webkit-mask-image:linear-gradient(transparent,#000 60%);mask-image:linear-gradient(transparent,#000 60%)}
+.term{position:relative;max-width:640px;margin:0 auto;background:rgba(255,255,255,.88);border:1px solid var(--line);border-radius:14px;padding:20px;font:400 .9rem/1.7 'JetBrains Mono',monospace;box-shadow:0 20px 50px rgba(0,0,0,.08)}
+#out{max-height:260px;overflow-y:auto;white-space:pre-wrap}
+.g{color:#1f9d55}.y{color:#b7791f}.b{color:var(--blue)}
+.term form{display:flex;gap:8px}.term input{flex:1;border:0;background:none;font:inherit;outline:0;color:var(--ink)}
+.hints{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}.hints button{border:1px solid var(--line);background:#fff;border-radius:99px;padding:2px 12px;font:inherit;font-size:.78rem;cursor:pointer}
+.hints button:hover{background:var(--ink);color:#fff}
+/* projects */
+.dots{background-image:radial-gradient(#d9d9d9 1px,transparent 1px);background-size:18px 18px}
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:22px}
+.pc{background:#fff;border:2px solid var(--ink);border-radius:18px;padding:18px;display:flex;gap:16px;align-items:center;box-shadow:5px 6px 0 #cfcfcf;text-decoration:none;transition:.2s}
+.pc:hover{transform:translate(-3px,-3px);box-shadow:8px 9px 0 #bdbdbd}
+.pc.hide{display:none}
+.ic{flex:0 0 58px;height:58px;border-radius:14px;display:grid;place-items:center;font-size:1.7rem;background:#f1f1f1}
+.pc b{display:block;font-weight:700;line-height:1.25}.pc span{color:var(--blue);font-size:.85rem;word-break:break-all}
+.lm{display:flex;margin:36px auto 0}
+/* numbers */
+.big{font:800 clamp(1.7rem,4.5vw,2.6rem)/1.15 Inter;letter-spacing:-.03em;text-align:center;color:#8a5fd6;max-width:20ch;margin:0 auto 34px}
+.st{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
+.st div{background:#fff;border-radius:12px;padding:20px 22px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.st b{display:block;font:500 2rem 'JetBrains Mono',monospace}.st span{color:var(--mut)}
+/* principles */
+.pr{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.pr div{border-radius:26px;padding:30px;min-height:210px;transition:transform .3s}.pr div:hover{transform:rotate(-1.5deg) scale(1.02)}
+.pr i{font-style:normal;font-size:1.8rem;display:block;margin-bottom:12px}.pr h3{font:500 1.5rem Inter;margin-bottom:8px}.pr p{color:#444;font-size:.95rem}
+/* experience */
+.xs{display:flex;gap:22px;overflow-x:auto;padding:10px 22px 24px;scroll-snap-type:x mandatory}
+.xc{flex:0 0 min(440px,88vw);aspect-ratio:1.6;border-radius:22px;padding:22px 24px;color:#fff;scroll-snap-align:center;position:relative;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;transition:transform .15s}
+.c1{background:radial-gradient(circle at 20% 25%,#3b78ff,transparent 42%),radial-gradient(circle at 80% 65%,#0b2a8a,transparent 50%),radial-gradient(circle at 45% 100%,#5ea0ff,transparent 38%),#07112b}
+.c2{background:radial-gradient(circle at 25% 70%,#777,transparent 45%),radial-gradient(circle at 80% 20%,#3a3a3a,transparent 50%),#0e0e0e}
+.c3{background:conic-gradient(from 210deg at 72% 40%,#ff6bd6,#6b5bff,#27e0c8,#ffd166,#ff6bd6),#12091f;background-blend-mode:screen}
+.xc::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.16) 50%,transparent 65%);transform:translateX(-100%);animation:sh 5s ease-in-out infinite}
+@keyframes sh{60%,100%{transform:translateX(100%)}}
+.chip{width:46px;height:32px;border-radius:7px;background:linear-gradient(135deg,#e8e8e8,#a9a9a9)}
+.xc h3{font:500 clamp(1.1rem,3.6vw,1.55rem) 'JetBrains Mono',monospace;letter-spacing:.14em;text-align:center;text-transform:uppercase;z-index:1}
+.xc dl{display:flex;justify-content:space-between;font:400 .82rem 'JetBrains Mono',monospace;gap:12px;z-index:1}.xc dt{opacity:.7;font-size:.72rem}
+.xh{text-align:center;color:var(--mut);font-size:.85rem}
+/* certs */
+.cq{text-align:center;max-width:620px;margin:0 auto}.cq .q{font:800 5rem/1 Georgia,serif;color:var(--blue);height:56px}
+.cq p{font-size:1.2rem;min-height:5.5em;transition:opacity .25s}
+.ar{display:flex;gap:14px;justify-content:center;margin-top:18px}.ar button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.08);cursor:pointer;font-size:1.1rem}
+/* feed */
+.sp{text-align:center}.sp small{letter-spacing:.2em;color:var(--mut)}
+.sp h2{margin:8px 0 14px}.sp>.wrap>p{color:var(--mut);max-width:52ch;margin:0 auto 26px}
+.fd{max-width:420px;margin:34px auto 0;display:grid;gap:14px;text-align:left}
+.fd div{display:flex;gap:12px;align-items:center;background:#fff;border-radius:14px;padding:12px 14px;box-shadow:0 8px 22px rgba(0,0,0,.09);animation:in .6s both}
+@keyframes in{from{opacity:0;transform:translateY(16px)}}
+.fd i{flex:0 0 40px;height:40px;border-radius:12px;display:grid;place-items:center;font-style:normal;background:#ffd36b}
+.fd small{letter-spacing:0;color:var(--mut)}
+.cn{margin-top:46px}.cn p{margin-bottom:12px}.cn .soc2{display:flex;gap:14px;justify-content:center}
+.soc2 a{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;text-decoration:none;font-weight:700;transition:.2s}.soc2 a:hover{background:var(--ink);color:#fff}
+.mq{overflow:hidden;border-top:1px solid var(--line);padding:18px 0;margin-top:50px}
+.mq div{display:flex;width:max-content;animation:sl 22s linear infinite;font:700 1.5rem Inter;color:#b8b8b8;gap:40px}
+@keyframes sl{to{transform:translateX(-50%)}}
+/* floating */
+.fm,.ft{position:fixed;bottom:18px;z-index:30}
+.fm{left:18px;width:54px;height:54px;border-radius:50%;background:#333;color:#fff;border:0;font-size:1.3rem;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.3)}
+.ft{right:18px;box-shadow:0 8px 20px rgba(0,0,0,.3)}
+#menu{position:fixed;inset:0;background:rgba(255,255,255,.96);z-index:25;display:none;flex-direction:column;justify-content:center;align-items:center;gap:20px}
+#menu.on{display:flex}#menu a{font:800 2.4rem Inter;letter-spacing:-.04em;text-decoration:none}#menu a:hover{color:var(--blue)}
+
+.soc svg,.soc2 svg{width:19px;height:19px;fill:currentColor}
+.soc2 a{color:var(--ink)}.soc2 a:nth-child(1):hover{background:#24292f}.soc2 a:nth-child(2):hover{background:#0a66c2}.soc2 a:nth-child(3):hover{background:#4285f4}.soc2 a:nth-child(4):hover{background:#ea4335}
+.hero{background:radial-gradient(40% 30% at 12% 20%,rgba(255,226,122,.35),transparent),radial-gradient(38% 30% at 88% 30%,rgba(190,170,255,.35),transparent),radial-gradient(45% 35% at 50% 100%,rgba(150,215,255,.4),transparent)}
+.tw{background:radial-gradient(60% 45% at 50% 100%,rgba(205,255,150,.45),transparent),radial-gradient(50% 30% at 80% 85%,rgba(255,236,150,.4),transparent)}
+#projects{background-image:radial-gradient(80% 260px at 50% 0,rgba(255,125,125,.3),transparent),radial-gradient(#d9d9d9 1px,transparent 1px);background-size:100% 100%,18px 18px}
+.pc:nth-child(1) .ic{background:linear-gradient(135deg,#ffe08a,#ff9f43)}.pc:nth-child(2) .ic{background:linear-gradient(135deg,#b4dcff,#4f9dff)}.pc:nth-child(3) .ic{background:linear-gradient(135deg,#e0d2ff,#9b7bff)}.pc:nth-child(4) .ic{background:linear-gradient(135deg,#cdf3a4,#4fd18b)}.pc:nth-child(5) .ic{background:linear-gradient(135deg,#ffc7ea,#ff72c0)}
+.pc:nth-child(1){box-shadow:5px 6px 0 #ffd27a}.pc:nth-child(2){box-shadow:5px 6px 0 #9cc9ff}.pc:nth-child(3){box-shadow:5px 6px 0 #c9b6ff}.pc:nth-child(4){box-shadow:5px 6px 0 #a9e8b4}.pc:nth-child(5){box-shadow:5px 6px 0 #ffb3dd}
+.st div{border-top:4px solid}.st div:nth-child(1){border-color:#ffb347}.st div:nth-child(2){border-color:#4f9dff}.st div:nth-child(3){border-color:#9b7bff}.st div:nth-child(4){border-color:#4fd18b}
+.st b{color:#8a5fd6}
+#experience{background:linear-gradient(#fff,#eaf1ff 50%,#fff)}
+.sp{background:linear-gradient(#fff,#f3edff 55%,#fff)}
+.cq p{color:#333}.pill.ft{background:linear-gradient(135deg,#111,#333)}
+
+.hi span{display:inline-block;animation:rv 1.7s cubic-bezier(.2,.9,.3,1.1) both}
+@keyframes rv{from{opacity:0;filter:blur(14px);transform:translateY(28px) scale(.6) rotateX(70deg)}60%{filter:blur(2px)}to{opacity:1;filter:blur(0);transform:none}}
+#ex use{animation:nin 1.8s ease both}
+#ex use.top{animation:ntop 2s ease both}
+@keyframes nin{from{opacity:0}to{opacity:1}}
+@keyframes ntop{from{opacity:0;filter:blur(12px)}60%{filter:blur(2px)}to{opacity:1;filter:blur(0)}}
+.fo{opacity:0;transition:opacity 1.2s ease!important}
+.wave svg{width:30px;height:30px;display:block}.hand{width:1.1em;height:1.1em;vertical-align:-.2em}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.stk{opacity:1;transform:rotate(var(--r))}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="hand" viewBox="0 0 64 64"><g fill="#ffc83d" stroke="#e8981a" stroke-width="2" stroke-linejoin="round"><rect x="15" y="15" width="9.5" height="30" rx="4.75" transform="rotate(-14 20 44)"/><rect x="24.5" y="6" width="9.5" height="36" rx="4.75" transform="rotate(-4 29 44)"/><rect x="34" y="6" width="9.5" height="36" rx="4.75" transform="rotate(6 39 44)"/><rect x="43.5" y="14" width="9.5" height="30" rx="4.75" transform="rotate(16 48 44)"/><rect x="6" y="36" width="9.5" height="22" rx="4.75" transform="rotate(-38 11 47)"/></g><path d="M15 38h38v8c0 11-8 14-19 14s-19-3-19-14z" fill="#ffc83d"/><path d="M15 46c0 11 8 14 19 14s19-3 19-14" fill="none" stroke="#e8981a" stroke-width="2" stroke-linecap="round"/><g fill="none" stroke="#e8981a" stroke-width="2.6" stroke-linecap="round"><path d="M55 4q6 4 6 12"/><path d="M52 1q8 3 9 8"/><path d="M6 8q-5 4-4 11"/></g></symbol></svg>
+
+
+<header class="hero">
+<span class="wave" aria-hidden="true"><svg viewBox="0 0 64 64"><use href="#hand"/></svg></span>
+<div class="soc"><a href="https://github.com/nikhilthk" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a><a href="https://www.linkedin.com/in/nikhil-chauhan-cloud/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="mailto:nikhil2004chauhan@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20v14H2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M2.5 6l9.5 7.5L21.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></a></div>
+<svg class="path" viewBox="0 0 400 700" preserveAspectRatio="none" aria-hidden="true">
+<path id="wp" d="M-20 80 C 120 20, 60 260, 200 330 S 330 520, 430 600" fill="none"/>
+<text><textPath href="#wp">AWS — S3 — EC2 — VPC — IAM — Docker — Kubernetes — Terraform — GitHub Actions — CI/CD — Linux — Git — Cloudflare — Python — AWS — S3 — EC2 — VPC — IAM — Docker — Kubernetes — Terraform<animate attributeName="startOffset" from="-30%" to="0%" dur="30s" repeatCount="indefinite"/></textPath></text></svg>
+<div class="n3"><svg class="nm" viewBox="0 0 560 170" aria-label="Nikhil"><defs><path id="np" d="M10 125 Q 280 15 550 105" fill="none"/><text id="nt" font-family="Inter, system-ui, sans-serif" font-size="80" font-weight="800" letter-spacing="-3"><textPath href="#np" startOffset="50%" text-anchor="middle">NIKHIL</textPath></text></defs><g id="ex"></g></svg></div>
+<div class="hi" id="hi">चौहान</div>
+<span class="scroll">scroll down ↓</span>
+</header>
+
+<section class="intro" id="intro"><div class="wrap">
+<small><svg class="hand" viewBox="0 0 64 64" aria-hidden="true"><use href="#hand"/></svg> Hey, I'm Nikhil Chauhan, learning and building in the cloud and I'm a...</small>
+<h3>Cloud &amp; DevOps fresher,</h3>
+<p id="ip">focused on building automated, secure pipelines<br>that prioritize <span id="tw"></span>.
+<span class="stk" style="left:2%;top:-30px;--r:-6deg;background:#ffe27a;animation-delay:.2s">automation</span>
+<span class="stk" style="left:46%;top:-6px;--r:5deg;background:#c9f0a0;animation-delay:.45s">security</span>
+<span class="stk" style="left:8%;top:44px;--r:4deg;background:#f6b7f0;animation-delay:.7s">reliability</span>
+<span class="stk" style="left:55%;top:70px;--r:-5deg;background:#bfe3ff;animation-delay:.95s">low cost</span></p>
+</div></section>
+
+<div class="tw"><div class="floor"></div><div class="wrap"><div class="term">
+<div id="out"></div>
+<form id="f" autocomplete="off"><span class="g">user@machine:~$</span><input id="c" aria-label="Terminal" placeholder="type help"></form>
+<div class="hints"><button>help</button><button>whoami</button><button>skills</button><button>projects</button><button>fortune</button><button>contact</button></div>
+</div></div></div>
+
+<section id="projects" class="dots"><div class="wrap"><h2>Projects</h2>
+<div class="pg" id="pg">
+<a class="pc" href="https://github.com/nikhilthk/s3-cloudflare-static-site" target="_blank" rel="noopener"><div class="ic">☁️</div><div><b>Static Site on S3 + Cloudflare</b><span>s3-cloudflare-static-site</span></div></a>
+<a class="pc" href="https://github.com/nikhilthk/automated-cicd-docker-hub" target="_blank" rel="noopener"><div class="ic">🐳</div><div><b>CI/CD with GitHub Actions &amp; Docker</b><span>automated-cicd-docker-hub</span></div></a>
+<a class="pc" href="https://github.com/nikhilthk?tab=repositories" target="_blank" rel="noopener"><div class="ic">🔗</div><div><b>AWS VPC Peering with Bastion Host</b><span>github.com/nikhilthk</span></div></a>
+<a class="pc hide" href="https://github.com/nikhilthk/devops-git-project" target="_blank" rel="noopener"><div class="ic">🌿</div><div><b>Git Branching &amp; Release Workflow</b><span>devops-git-project</span></div></a>
+<a class="pc hide" href="https://github.com/nikhilthk?tab=repositories" target="_blank" rel="noopener"><div class="ic">🌱</div><div><b>Plant Disease Detection App</b><span>github.com/nikhilthk</span></div></a>
+</div>
+<button class="pill lm" id="lm">⊕ Load More</button></div></section>
+
+<section><div class="wrap"><p class="big">Real cloud labs, real pipelines, built hands-on</p>
+<div class="st">
+<div><b data-n="5">0</b><span>Projects built</span></div>
+<div><b data-n="4">0</b><span>Google Cloud skill badges</span></div>
+<div><b data-n="3">0</b><span>Internships &amp; trainings</span></div>
+<div><b data-n="2">0</b><span>Cloud platforms: AWS &amp; GCP</span></div>
+</div></div></section>
+
+<section id="principles"><div class="wrap"><h2>Principles</h2>
+<div class="pr">
+<div style="background:#a9d8f5"><i>♛</i><h3>Automate</h3><p>If I do it twice, I script it or put it in a pipeline.</p></div>
+<div style="background:#bdbfe8"><i>🔐</i><h3>Secure by default</h3><p>Least-privilege IAM, MFA and secrets kept out of code.</p></div>
+<div style="background:#f5f6bd"><i>🚀</i><h3>Fast feedback</h3><p>Small commits, quick builds, clear logs when something fails.</p></div>
+<div style="background:#f6c8ea"><i>📝</i><h3>Document</h3><p>Clear READMEs and screenshots so anyone can repeat my steps.</p></div>
+<div style="background:#c9efc8"><i>💰</i><h3>Cost aware</h3><p>Budgets, alerts and cleanup after every lab.</p></div>
+</div></div></section>
+
+<section id="experience"><h2>Experience</h2>
+<div class="xs">
+<div class="xc c1"><div class="chip"></div><h3>DevOps Intern</h3><dl><div><dt>Company Name</dt>Elevate Labs</div><div><dt>Tenure</dt>09/2026 - 11/2026</div></dl></div>
+<div class="xc c2"><div class="chip"></div><h3>DevSecOps with AWS</h3><dl><div><dt>Company Name</dt>NIELIT Haridwar</div><div><dt>Tenure</dt>Ongoing</div></dl></div>
+<div class="xc c3"><div class="chip"></div><h3>AI/ML Intern</h3><dl><div><dt>Company Name</dt>InternPro</div><div><dt>Tenure</dt>06/2025 - 08/2025</div></dl></div>
+</div><p class="xh">🖱 Scroll this way &gt;&gt;</p></section>
+
+<section><div class="wrap"><h2>Certifications</h2>
+<div class="cq"><div class="q">“</div><p id="cp"></p><b id="cn"></b>
+<div class="ar"><button id="pv" aria-label="Previous">‹</button><button id="nx" aria-label="Next">›</button></div><p style="margin-top:22px"><a class="pill" href="https://www.skills.google/public_profiles/52464082-375b-476c-b4a1-198d8214e3ad" target="_blank" rel="noopener">View my Google Skills profile</a></p></div></div></section>
+
+<section class="sp" id="contact"><div class="wrap">
+<small>HIRING</small><h2>Open to work</h2>
+<p>I'm looking for an entry-level Cloud and DevOps role where I can learn, grow and apply my skills.</p>
+<a class="pill" href="mailto:nikhil2004chauhan@gmail.com">✉ nikhil2004chauhan@gmail.com</a>
+<div class="fd" id="fd"></div>
+<div class="cn"><p>Connect with me on:</p><div class="soc2"><a href="https://github.com/nikhilthk" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a><a href="https://www.linkedin.com/in/nikhil-chauhan-cloud/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="https://www.skills.google/public_profiles/52464082-375b-476c-b4a1-198d8214e3ad" target="_blank" rel="noopener" aria-label="Google Skills"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg></a><a href="mailto:nikhil2004chauhan@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20v14H2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M2.5 6l9.5 7.5L21.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></a></div></div>
+</div>
+<div class="mq"><div><span>Thanks for visiting my portfolio! |</span><span>Code &amp; Crafted with 💛 by Nikhil Chauhan |</span><span>Thanks for visiting my portfolio! |</span><span>Code &amp; Crafted with 💛 by Nikhil Chauhan |</span><span>Thanks for visiting my portfolio! |</span><span>Code &amp; Crafted with 💛 by Nikhil Chauhan |</span></div></div>
+</section>
+
+<button class="fm" id="mb" aria-label="Menu">☰</button>
+<a class="pill ft" href="#contact">Let's talk →</a>
+<nav id="menu"><a href="#intro">About</a><a href="#projects">Projects</a><a href="#principles">Principles</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+// 3D name: stacked copies make the extruded depth
+const ex=$('#ex'),NS='http://www.w3.org/2000/svg';
+function buildName(){ex.innerHTML='';for(let i=14;i>=0;i--){const u=document.createElementNS(NS,'use');u.setAttribute('href','#nt');u.setAttribute('transform','translate('+(i*.8)+','+(i*1.1)+')');u.setAttribute('fill',i?'hsl(220,12%,'+(28+i*3.2)+'%)':'#111');u.style.animationDelay=(.2+(14-i)*.08)+'s';if(!i)u.setAttribute('class','top');ex.appendChild(u)}}
+const hero=$('.hero'),nmv=$('.nm');
+hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;nmv.style.animation='none';nmv.style.transform='rotateY('+(x*44)+'deg) rotateX('+(-y*26)+'deg)'});
+
+// intro: stickers drop + typed word
+new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){$('#intro').classList.add('go');o.disconnect()}},{threshold:.4}).observe($('#intro'));
+const tws=['requirements','pipelines','security','uptime','learning'];let ti=0,tc=0,td=false;
+(function t(){const w=tws[ti];$('#tw').textContent=w.slice(0,tc);if(!td&&tc++===w.length){td=true;return setTimeout(t,1300)}if(td&&--tc<0){td=false;tc=0;ti=(ti+1)%tws.length}setTimeout(t,td?40:90)})();
+// terminal
+const out=$('#out'),d=new Date(),fort=['Perfection may not be attainable, but if we chase perfection, we can catch excellence.','Automate the boring parts, then enjoy the interesting ones.','A pipeline that fails fast is a pipeline that teaches fast.','Least privilege today saves a breach tomorrow.'];let fi=0;
+const C={help:'Commands: help, whoami, skills, projects, certs, fortune, contact, clear',
+whoami:'Nikhil Chauhan, Cloud & DevOps fresher from Kangra, Himachal Pradesh.\nB.Tech CSE (2022-2026).',
+skills:'AWS (S3, EC2, VPC, IAM), Docker, Terraform, Kubernetes (GKE), GitHub Actions, Linux, Git, Cloudflare, Python',
+projects:'1. Static site on S3 + Cloudflare\n2. CI/CD with GitHub Actions & Docker\n3. AWS VPC Peering\n4. Git workflow project\n5. Plant disease detection',
+certs:'AWS Cloud Practitioner (in progress)\nGoogle Cloud: Monitoring, GKE, Terraform, Sensitive Data Protection',
+contact:'nikhil2004chauhan@gmail.com\nlinkedin.com/in/nikhil-chauhan-cloud\ngithub.com/nikhilthk'};
+function run(v){const l=document.createElement('div');l.innerHTML='<span class="g">user@machine:~$</span> <span class="y"></span>';l.lastChild.textContent=v;out.appendChild(l);
+const r=document.createElement('div');if(v==='clear'){out.innerHTML='';return}
+r.innerHTML='<span class="b">bot@gpt:~$</span>\n';const s=document.createElement('span');
+if(v==='contact'){s.innerHTML='<a class="b" href="mailto:nikhil2004chauhan@gmail.com">nikhil2004chauhan@gmail.com</a>\n<a class="b" href="https://www.linkedin.com/in/nikhil-chauhan-cloud/" target="_blank" rel="noopener">linkedin.com/in/nikhil-chauhan-cloud</a>\n<a class="b" href="https://github.com/nikhilthk" target="_blank" rel="noopener">github.com/nikhilthk</a>'}else s.textContent=v==='fortune'?fort[fi++%fort.length]:(C[v]||'command not found: '+v+'. Type help.');r.appendChild(s);out.appendChild(r);out.scrollTop=out.scrollHeight}
+out.innerHTML='<div>Last login: '+d.toDateString().slice(0,10)+' '+d.toTimeString().slice(0,8)+' on console</div>';
+run('fortune');
+$('#f').onsubmit=e=>{e.preventDefault();const v=$('#c').value.trim().toLowerCase();if(v)run(v);$('#c').value=''};
+$$('.hints button').forEach(b=>b.onclick=()=>run(b.textContent));
+// load more
+$('#lm').onclick=function(){$$('.pc.hide').forEach(c=>c.classList.remove('hide'));this.remove()};
+// counters
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,n=+el.dataset.n;let i=0;const s=setInterval(()=>{el.textContent=++i+'+';if(i>=n)clearInterval(s)},170);io.unobserve(el)}),{threshold:.6});
+$$('[data-n]').forEach(x=>io.observe(x));
+// card tilt
+$$('.xc').forEach(c=>{c.onmousemove=e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform='perspective(800px) rotateY('+x*12+'deg) rotateX('+-y*12+'deg)'};c.onmouseleave=()=>c.style.transform=''});
+// certs carousel
+const cs=[['AWS Cloud Practitioner','In progress. Learning core AWS services, security, pricing and cloud concepts.'],['Google Cloud: Monitoring','Skill badge earned for monitoring cloud resources and setting up alerts.'],['Google Cloud: Deploy Kubernetes Applications (GKE)','Skill badge earned for deploying containerized apps on Google Kubernetes Engine.'],['Google Cloud: Build Infrastructure with Terraform','Skill badge earned for provisioning cloud infrastructure as code.'],['Google Cloud: Sensitive Data Protection & Discovery','Skill badge earned for finding and protecting sensitive data in the cloud.']];let k=0;
+function showC(){const p=$('#cp');p.style.opacity=0;setTimeout(()=>{p.textContent=cs[k][1];$('#cn').textContent=cs[k][0];p.style.opacity=1},200)}
+$('#nx').onclick=()=>{k=(k+1)%cs.length;showC()};$('#pv').onclick=()=>{k=(k+cs.length-1)%cs.length;showC()};showC();
+// status feed
+const fs=[['🎓','Training in progress','DevSecOps with AWS · NIELIT Haridwar'],['📜','Studying for','AWS Cloud Practitioner'],['🚀','Latest deploy','This site, via GitHub Actions to S3'],['🔧','Last build','CI/CD pipeline with Docker Hub']];let q=0;
+function feed(){const fd=$('#fd'),x=fs[q++%fs.length],el=document.createElement('div');el.innerHTML='<i>'+x[0]+'</i><div><b>'+x[1]+'</b><br><small>'+x[2]+'</small></div>';fd.prepend(el);while(fd.children.length>3)fd.lastChild.remove()}
+feed();feed();feed();setInterval(feed,3500);
+// Under-name line: Hindi first, then English. Each one starts hidden, comes in, then hides slowly
+const hiEl=$('#hi'),n3=$('.n3');
+const seg=t=>window.Intl&&Intl.Segmenter?[...new Intl.Segmenter(undefined,{granularity:'grapheme'}).segment(t)].map(x=>x.segment):[...t];
+function playHi(t,base,step){hiEl.innerHTML='';seg(t).forEach((g,i)=>{const sp=document.createElement('span');sp.textContent=g;sp.style.animationDelay=(base+i*step)+'s';hiEl.appendChild(sp)})}
+const T=(f,ms)=>setTimeout(f,ms);
+function cycle(){n3.classList.remove('fo');hiEl.classList.remove('fo');buildName();playHi('चौहान',1.4,.35);
+T(()=>hiEl.classList.add('fo'),6000);
+T(()=>{hiEl.classList.remove('fo');playHi('CHAUHAN',.1,.2)},7400);
+T(()=>{n3.classList.add('fo');hiEl.classList.add('fo')},13200);
+T(cycle,14600)}
+if(matchMedia('(prefers-reduced-motion: reduce)').matches){buildName();playHi('चौहान',0,0)}else cycle();
+// menu
+$('#mb').onclick=()=>{$('#menu').classList.toggle('on');$('#mb').textContent=$('#menu').classList.contains('on')?'✕':'☰'};
+$$('#menu a').forEach(a=>a.onclick=()=>{$('#menu').classList.remove('on');$('#mb').textContent='☰'});
+</script>
+</body>
+</html>
