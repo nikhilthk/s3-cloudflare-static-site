@@ -1,0 +1,28 @@
+# Secrets and credentials (never commit these)
+.env
+.env.*
+*.pem
+*.key
+.aws/
+credentials
+secrets.txt
+*accesskey*.csv
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+
+# Dependencies and build output (if added later)
+node_modules/
+dist/
+build/
+
+# Logs and temp files
+*.log
+*.tmp
